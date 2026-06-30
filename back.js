@@ -14,7 +14,7 @@ audio.addEventListener('loadedmetadata', () => {
 
 function actualizarIcono(activo) {
     sonActivo = activo;
-    iconoSon.src = activo ? 'assets/bocina.png' : 'assets/sin-sonido.png';
+    iconoSon.src = activo ? 'assets/sonido.png' : 'assets/sin-sonido.png';
     iconoSon.alt = activo ? 'Sonido activado' : 'Sonido silenciado';
 }
 
