@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hola</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <section class="s-perdon" id="inicio">
+
+        <button class="btn-sonido" id="btnSonido" aria-label="Silenciar sonido">
+            <img src="assets/bocina.png" alt="Sonido" id="iconoSonido">
+        </button>
+
+        <header class="encabezado">
+            <h1 class="f-mc c-negro">HOLA</h1>
+            <p class="f-mj c-blanco">Como has estado. He aquí una nota para tí</p>
+        </header>
+
+        <div class="separador" aria-hidden="true"></div>
+
+        <div class="seccion-libro">
+            <img src="assets/ramo.png"     class="deco deco--ramo-tl"     alt="" aria-hidden="true">
+            <img src="assets/redstone.png" class="deco deco--redstone-tr" alt="" aria-hidden="true">
+            <img src="assets/redstone.png" class="deco deco--redstone-bl" alt="" aria-hidden="true">
+            <img src="assets/ramo.png"     class="deco deco--ramo-br"     alt="" aria-hidden="true">
+
+            <article class="libro">
+                <p class="f-mj libro-texto">
+                    Lamento el momento de negarme a cambiar, por ser negligente,
+                    por caer en la terquedad de mi mente.
+                    <br><br>
+                    No considere el sentir de la persona delante de mi y pasa el
+                    tiempo sin dejar momento a enmendar los errores a una persona
+                    sin igual.
+                    <br><br>
+                    Me resigno a perder instante de no intentar lo que mi mente
+                    no se atreve a desvelar. Queriendo egoístamente el privilegio
+                    de volver a intentar.
+                </p>
+            </article>
+        </div>
+
+        <div class="separador separador--dark" aria-hidden="true"></div>
+
+        <section class="seccion-plus">
+            <h2 class="f-mc c-blanco">PLUS</h2>
+            <p class="f-mj c-blanco descripcion">
+                Aquí la fotos que mas me gustan de usted si las acercas
+                te darás cuenta de que están hechas
+            </p>
+
+            <div class="carrusel-wrapper" id="carruselWrapper">
+                <div class="carrusel" id="carrusel">
+                    <figure class="foto-card">
+                        <img src="assets/256_1782734253364.png" alt="Foto favorita 1" draggable="false">
+                    </figure>
+                    <figure class="foto-card">
+                        <img src="assets/rgb.png" alt="Foto favorita 2" draggable="false">
+                    </figure>
+                    <figure class="foto-card">
+                        <img src="assets/acsi.png" alt="Foto favorita 3" draggable="false">
+                    </figure>
+                </div>
+                <div class="carrusel-dots">
+                    <span class="dot dot--activo"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+        </section>
+
+        <div class="separador" aria-hidden="true"></div>
+
+        <section class="seccion-pregunta">
+            <h2 class="f-mc c-blanco titulo-pregunta">
+                ME PERMITES UNA OPORTUNIDAD
+            </h2>
+
+            <div class="botones-wrap">
+                <button class="btn-resp btn-si" onclick="window.location.href='si.html'">SI</button>
+                <button class="btn-resp btn-no" id="btnNo"
+                        onmouseover="esquivarNo(this)"
+                        ontouchstart="esquivarNo(this)">NO</button>
+            </div>
+        </section>
+
+        <div class="rosa-wrap">
+            <img src="assets/rosa.png" alt="Rosa píxel" class="rosa">
+        </div>
+
+        <footer class="letra-cancion">
+            <p class="f-mj c-blanco">The prettiest girl I've ever seen</p>
+            <p class="f-mj c-blanco">From the cover of a magazine</p>
+            <br>
+            <p class="f-mj c-blanco credito">Eyedress (2021), Something About You</p>
+        </footer>
+
+    </section>
+
+    <script src="back.js"></script>
+</body>
+</html>

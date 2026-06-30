@@ -1,0 +1,410 @@
+@font-face {
+    font-family: 'Minecraft';
+    src: url('assets/MinecraftTen.ttf') format('truetype');
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Mojangles';
+    src: url('assets/mojangles.otf') format('opentype');
+    font-display: swap;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #0d0f2b;
+    overflow-x: hidden;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: inherit;
+}
+
+.f-mc {
+    font-family: 'Minecraft', monospace;
+    font-weight: 400;
+    font-style: normal;
+}
+.f-mj {
+    font-family: 'Mojangles', monospace;
+    font-weight: 400;
+    font-style: normal;
+}
+.c-negro  { color: #000000; }
+.c-blanco { color: #FFFFFF; }
+
+.s-perdon {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #1e2060;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 64px;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.s-perdon::before {
+    content: '';
+    position: absolute;
+    inset: -20px;
+    background: url('assets/backgrowp-cell.jpg') center top / cover no-repeat;
+    filter: blur(2px) brightness(0.9);
+    transform: scale(1.08);
+    z-index: -1;
+}
+
+.btn-sonido {
+    position: absolute;
+    top: 20px;
+    right: 16px;
+    width: 43px;
+    height: 43px;
+    padding: 0;
+    z-index: 10;
+}
+.btn-sonido img {
+    width: 43px;
+    height: 43px;
+    object-fit: contain;
+}
+
+.encabezado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    margin-top: 64px;
+    width: 100%;
+    max-width: 402px;
+    padding: 0 20px;
+    text-align: center;
+}
+.encabezado h1 {
+    font-size: clamp(36px, 11vw, 48px);
+    line-height: 1;
+}
+.encabezado p {
+    font-size: 20px;
+    line-height: 1.5;
+    max-width: 353px;
+    color: #000;;
+}
+
+.separador {
+    width: 100%;
+    max-width: 360px;
+    padding: 0 24px;
+    margin: 18px 0;
+    text-align: center;
+    overflow: hidden;
+}
+.separador::before {
+    content: '---------------------------------------------';
+    font-family: 'Mojangles', monospace;
+    font-size: 20px;
+    line-height: 20px;
+    color: #000000;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.separador--dark::before {
+    color: #101010;
+}
+
+.seccion-libro {
+    position: relative;
+    width: 100%;
+    max-width: 402px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 16px;
+}
+
+.deco {
+    position: absolute;
+    pointer-events: none;
+    z-index: 2;
+}
+.deco--ramo-tl {
+    width: 44px;
+    height: 48px;
+    top: 8px;
+    left: 8px;
+}
+.deco--redstone-tr {
+    width: 60px;
+    height: 52px;
+    top: 8px;
+    right: 8px;
+}
+.deco--redstone-bl {
+    width: 60px;
+    height: 52px;
+    bottom: 8px;
+    left: 8px;
+}
+.deco--ramo-br {
+    width: 45px;
+    height: 48px;
+    bottom: 8px;
+    right: 8px;
+    transform: scaleX(-1);
+}
+
+.libro {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 296px;
+    aspect-ratio: 561 / 709;
+    background: url('assets/libro.png') center / 100% 100% no-repeat;
+    padding: 48px 10px 12px 28px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px
+}
+.libro-texto {
+    font-size: 13px;
+    line-height: 1.65;
+    color: #000000;
+    max-width: 246px;
+}
+
+.seccion-plus {
+    width: 100%;
+    max-width: 402px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    padding: 0 16px;
+}
+.seccion-plus h2 {
+    font-size: clamp(36px, 11vw, 48px);
+    line-height: 1;
+    text-align: center;
+}
+.descripcion {
+    font-size: 20px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.carrusel-wrapper {
+    position: relative;
+    width: 320px;
+    height: 520px;
+    overflow: hidden;
+    border-radius: 28px;
+    cursor: grab;
+    touch-action: pan-y;
+}
+.carrusel-wrapper:active {
+    cursor: grabbing;
+}
+
+.carrusel {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    width: calc(320px * 3);
+    height: 520px;
+    transform: translateX(0);
+    transition: transform 0.45s ease;
+    will-change: transform;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.foto-card {
+    width: 320px;
+    height: 520px;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+.foto-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
+    -webkit-user-drag: none;
+}
+
+.carrusel-dots {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 5;
+}
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transition: background 0.3s;
+}
+.dot--activo {
+    background: #fff;
+}
+
+.seccion-pregunta {
+    width: 100%;
+    max-width: 402px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 36px;
+    padding: 20px 20px 0;
+    text-align: center;
+}
+.titulo-pregunta {
+    font-size: clamp(36px, 11vw, 48px);
+    line-height: 1.1;
+}
+
+.botones-wrap {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 48px;
+    width: 100%;
+    min-height: 120px;
+}
+
+.btn-resp {
+    width: 105px;
+    height: 71px;
+    background: #394388;
+    font-family: 'Minecraft', monospace;
+    font-size: 36px;
+    line-height: 1;
+    color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #fff;
+    box-shadow: 4px 4px 0 #1b2145;
+    position: relative;
+}
+.btn-resp:hover {
+    filter: brightness(1.2);
+}
+.btn-si {
+    transition: filter 0.1s ease;
+}
+.btn-no {
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.rosa-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 0 16px;
+}
+.rosa {
+    width: 207px;
+    height: auto;
+    image-rendering: pixelated;
+}
+
+.letra-cancion {
+    text-align: center;
+    padding: 16px 20px 0;
+    width: 100%;
+    max-width: 402px;
+}
+.letra-cancion p {
+    font-size: 16px;
+    line-height: 1.9;
+}
+.credito {
+    font-size: 13px !important;
+    opacity: 0.7;
+    margin-top: 6px;
+}
+
+@media (min-width: 580px) {
+
+    .encabezado,
+    .seccion-plus,
+    .seccion-pregunta,
+    .letra-cancion,
+    .separador {
+        max-width: 560px;
+    }
+
+    .seccion-libro {
+        max-width: 560px;
+        padding: 60px 32px;
+    }
+
+    .libro {
+        max-width: 370px;
+        padding: 60px 13px 15px 35px;
+    }
+    .libro-texto {
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 900px) {
+
+    .encabezado,
+    .seccion-pregunta,
+    .letra-cancion,
+    .separador {
+        max-width: 740px;
+    }
+
+    .seccion-libro {
+        max-width: 740px;
+        padding: 70px 40px;
+    }
+
+    .libro {
+        max-width: 444px;
+        padding: 72px 15px 18px 42px;
+    }
+    .libro-texto {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+    html {
+        scroll-behavior: auto;
+    }
+}
